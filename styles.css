@@ -15,13 +15,28 @@
     overflow:hidden;
     white-space: nowrap;
     border-right: 1px solid white;
-    animation: typing 12s steps(12) forwards, blink 0.5s step-end infinite;
+    animation: typing 6s steps(6) forwards, blink 0.5s step-end infinite;
 }
-
+#p2 {
+    color: #D1107A;
+    font-family: monospace;
+    font-size: 1.5rem;
+}
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
 }
 @keyframes blink {
     50% { border-color: transparent; }
+}d to add another animation
+.hidden{
+    opacity: 0;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.appear {
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
 }
