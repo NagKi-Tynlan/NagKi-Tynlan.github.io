@@ -1,0 +1,37 @@
+.banner{
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+}
+.banner .product{
+    /* background-color:red; */
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: 0.7s;
+    --left: 0px;
+}
+.banner .product .soda{
+    background: 
+
+    url('../images/output-onlinepngtools.png') var(--left) 0,
+    url('../images/freepik__adjust__47762.png');
+
+    background-size: auto 100%;
+
+    width: 280px;
+
+    height: 500px;
+    background-blend-mode: multiply ;
+    mask-image: url('../images/freepik__adjust__47762.png');
+    mask-size: auto 100%;
+    transition: 0.7s;
+}
+.banner .product:hover{
+    --left: -1000px;
+}
