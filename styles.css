@@ -21,6 +21,12 @@
     color: #D1107A;
     font-family: monospace;
     font-size: 1.5rem;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeIn 3s forwards 6s, blinkText 1s step-end infinite 7s;
 }
 @keyframes typing {
     from { width: 0; }
@@ -36,7 +42,11 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+@keyframes blinkText {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
 .appear {
-    animation: fadeIn 1s forwards;
+    animation: fadeIn 3s forwards;
     animation-delay: 0.5s;
 }
