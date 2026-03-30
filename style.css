@@ -1,17 +1,21 @@
-* {
-    box-sizing: border-box;
-}
-
 html, body {
     margin: 0;
+    place-items: center;
+    display: grid;
+    min-height: 100vh;
     padding: 0;
     width: 100%;
     height: auto;
     overflow: auto;
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     background: #ffffff;
+    margin: 0;
     cursor: url(assets/icons8-minecraft-sword-32.png), auto;
+    
 }
+
 
 .hero-container {
     display: flex;
@@ -98,7 +102,7 @@ html, body {
 }
 
 .about-section {
-    background: #f8f9fa;
+    background: #ffffff;
     color: #333;
 }
 
@@ -108,7 +112,7 @@ html, body {
 }
 
 .contact-section {
-    background: #e9ecef;
+    background: #ffffff;
     color: #333;
 }
 
@@ -139,11 +143,16 @@ html, body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
+
 .project-card:hover {
+    animation: ease-in-out 200ms pop;
     transform: translateY(-5px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    color: white;
+    font-weight: bolder;
 }
 
 .project-card h3 {
@@ -155,16 +164,97 @@ html, body {
     margin-bottom: 0;
     font-size: 1rem;
 }
-/*
-.social-icons {
-    width: 60px;
-    height: 60px;
-    background:rgb(246, 15, 15);
-    color: white;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: url(assets/minecraft-sword-click-cursor.png), auto;
-    border-radius: 50%;
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
 }
-*/
+.project-card::after, .project-card::before{
+    content:'';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    height: calc(100% + 6px);
+    width: calc(100% + 6px);
+    background-image: conic-gradient(from var(--angle),transparent,purple,transparent);
+    border-radius: 10px;
+    z-index: -1;
+    animation: 3s spin linear infinite;
+}
+.project-card::before {
+    filter:blur(1.5rem);
+    opacity:0.5;
+}
+@keyframes spin{
+    from{
+        --angle:0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
+
+
+
+.socials-container{
+    display: flex;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+}
+.socials-container a{
+    background-color: white;
+    padding: 1em;
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+    box-sizing: border-box;
+    flex-shrink: 0  ;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.953);
+}
+.socials-container a svg{
+    height:32px;
+    fill: black ;
+}
+.socials-container a::before{
+    content:attr(data-social);
+    position: absolute;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.953);
+    transform: translateY(-30px) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.socials-container a:hover{
+    background-color: var(--accent-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.953);
+    fill:white;
+}
+.socials-container a:hover svg{
+    fill: white;
+}
+.socials-container a::after{
+    content:'';
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    border-left:8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--accent-color);
+    transform: translateY(0px) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.socials-container a:hover::before{
+    transform:translateY(-65px) rotate(0);
+    opacity: 1;
+}
+.socials-container a:hover::after{
+    transform:translateY(-42px) rotate(0);
+    opacity: 1;
+}
